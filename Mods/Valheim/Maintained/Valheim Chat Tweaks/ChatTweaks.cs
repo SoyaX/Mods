@@ -1,23 +1,21 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
 using HarmonyLib;
-using Jotunn.Utils;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 namespace Valheim_Chat_Tweaks
 {
-    [BepInPlugin("kenx00x.ChatTweaks", "Chat Tweaks", "1.2.0")]
+    [BepInPlugin("soyax.ChatTweaks", "Chat Tweaks Redux", "1.2.1")]
     [BepInProcess("valheim.exe")]
-    [BepInDependency(Jotunn.Main.ModGuid)]
-    [NetworkCompatibility(CompatibilityLevel.EveryoneMustHaveMod, VersionStrictness.Patch)]
+    [BepInIncompatibility("kenx00x.ChatTweaks")]
     public class ChatTweaks : BaseUnityPlugin
     {
         static public ConfigEntry<bool> enableAlwaysShout;
         static public ConfigEntry<float> hideDelay;
         static public ConfigEntry<KeyCode> chatKey;
-        private readonly Harmony harmony = new Harmony("kenx00x.ChatTweaks");
+        private readonly Harmony harmony = new Harmony("soyax.ChatTweaks");
         public void Awake()
         {
             enableAlwaysShout = Config.Bind("General","AlwaysShout",false,"Enable or disable to always shout");
